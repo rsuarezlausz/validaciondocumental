@@ -1,0 +1,69 @@
+# Umbrales de las señales forenses. VERSIONADO: regenerar con `python -m eval.synthetic_eval --write`.
+# version/source indican el origen. Los valores iniciales son los medidos en el caso real
+# (par "3"-"3" forma 0.982 / residuo 0.78; "7"-"7" natural 0.953 / 0.67; otros <= 0.90 / <= 0.48)
+# y NO están calibrados con una población de documentos: tratarlos como provisionales.
+version: 1
+source: "manual-initial (caso real único)"
+
+glyph_copy_move:
+  size_tolerance_px: 2        # |dh|, |dw| máximo para considerar glifos compatibles
+  shape_ncc_floor: 0.93       # por debajo: puntuación de forma = 0
+  shape_ncc_full: 0.99        # a partir de aquí: forma = 1
+  residual_ncc_floor: 0.55    # residuo del recorte (incluye fondo)
+  residual_ncc_full: 0.85
+  background_ncc_floor: 0.30  # residuo solo del fondo (sin trazos): la señal principal
+  background_ncc_full: 0.75
+  illumination_delta_max: 12  # |media fondo A - media fondo B| (niveles de gris) para "misma luz"
+  distribution_z_min: 2.5     # z robusto del residuo frente a los pares naturales del documento
+  min_score_report: 0.5
+  high_score: 0.7
+
+seam:
+  min_contrast: 35            # diferencia de brillo respecto a los vecinos laterales (niveles)
+  min_run_fraction: 1.1       # longitud mínima = fracción * altura mediana de glifo
+  consistency: 0.85           # fracción de filas/columnas que debe cumplir el contraste
+  max_width_px: 3
+
+local_consistency:
+  z_threshold: 4.0
+  min_glyphs_per_line: 6
+  min_metrics_flagged: 2
+
+text_geometry:
+  baseline_z: 4.0
+  height_z: 4.0
+  pitch_z: 4.5
+  min_glyphs_per_line: 6
+
+fusion:
+  weights:                    # peso máximo de cada señal en la probabilidad
+    barcode_mismatch: 0.90
+    glyph_copy_move: 0.75
+    seam_artifact: 0.55
+    rule_violation: 0.45
+    local_inconsistency: 0.12
+    geometry_anomaly: 0.10
+    ela: 0.25
+    noise: 0.20
+    jpeg_ghost: 0.30
+    metadata: 0.20
+    flat_patch: 0.60
+    background_discontinuity: 0.35
+    patch_text_inconsistency: 0.45
+    pdf_incremental_update: 0.15
+    pdf_producer_anomaly: 0.10
+    pdf_overlay_shape: 0.60
+    pdf_text_layer_mismatch: 0.50
+  weak_cap: 0.45              # las señales débiles juntas no superan un score medio
+  weak_types: [ela, noise, jpeg_ghost, metadata, geometry_anomaly, local_inconsistency, background_discontinuity]
+  medium_probability: 0.40
+  high_probability: 0.70
+  inconclusive_threshold: 0.15   # por debajo: sin suficientes señales
+
+flat_patch:
+  min_px: 8
+  ring_width: 8
+  std_ratio_floor: 5.0
+  hf_ratio_floor: 5.0
+  rectangularity_min: 0.65
+  scale_count: 3

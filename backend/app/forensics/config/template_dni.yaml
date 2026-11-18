@@ -1,0 +1,28 @@
+# Plantilla del DNI argentino (tarjeta, frente). Coordenadas RELATIVAS (0..1) al documento.
+# SUPUESTO: derivadas de una foto del documento; ajustar por versión/orientación del DNI.
+enabled: true
+aspect_ratio: 1.586        # ancho/alto de una tarjeta ID-1
+aspect_tolerance: 0.20     # se aplica la plantilla solo si el aspecto de la imagen coincide
+
+# Margen exterior (fracción del ancho/alto): fondo de mesa y esquinas redondeadas de la tarjeta.
+border_margin_x: 0.05
+border_margin_y: 0.10
+
+# Zonas que NO se marcan como sospechosas por ELA/ruido (alta textura legítima).
+# Sí se analiza su consistencia con el resto en las señales de glifos.
+excluded_zones:
+  photo:     {x: 0.10, y: 0.26, w: 0.26, h: 0.50}
+  hologram:  {x: 0.31, y: 0.55, w: 0.22, h: 0.30}
+  guilloche_band: {x: 0.00, y: 0.76, w: 0.60, h: 0.24}
+  barcode:   {x: 0.59, y: 0.76, w: 0.36, h: 0.16}   # PDF417 y barra: alto contraste legítimo
+
+# Cajas de los campos impresos (coordenadas relativas, SUPUESTO: layout del DNI tarjeta fotografiado).
+# Se usan para OCR dirigido (recorte + variantes de preprocesado + votación) en la validación del barcode.
+fields:
+  surname:    {x: 0.385, y: 0.225, w: 0.250, h: 0.050, kind: text}
+  name:       {x: 0.385, y: 0.345, w: 0.260, h: 0.050, kind: text}
+  birth:      {x: 0.385, y: 0.557, w: 0.250, h: 0.040, kind: date}
+  issue:      {x: 0.385, y: 0.641, w: 0.250, h: 0.042, kind: date}
+  expiry:     {x: 0.385, y: 0.719, w: 0.250, h: 0.045, kind: date}
+  doc_number: {x: 0.100, y: 0.825, w: 0.215, h: 0.075, kind: digits}
+  tramite:    {x: 0.385, y: 0.805, w: 0.175, h: 0.050, kind: digits}

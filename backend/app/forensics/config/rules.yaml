@@ -1,0 +1,18 @@
+# Reglas de coherencia. TODAS son supuestos "por verificar": no tienen fuente normativa confirmada.
+# Un incumplimiento NO prueba falsificación (puede haber excepciones: renovaciones, menores, extranjeros).
+rules:
+  issue_before_expiry:
+    verified: false
+    source: "Sentido común: la emisión no puede ser posterior al vencimiento."
+  birth_before_issue:
+    verified: false
+    source: "Sentido común: el nacimiento debe ser anterior a la emisión."
+  expected_validity:
+    verified: false
+    source: >
+      SUPUESTO observado en DNI tarjeta de adultos (emisión 2015 -> vencimiento 2030):
+      vigencia de 15 años para titulares de 16 años o más. Confirmar con RENAPER antes
+      de usar como evidencia fuerte; para menores la vigencia es distinta y NO se evalúa.
+    adult_min_age: 16
+    adult_validity_years: 15
+    tolerance_days: 7

@@ -1,0 +1,50 @@
+version: 2
+source: synthetic-eval n=16 seed=7 (2026-10-15)
+glyph_copy_move:
+  size_tolerance_px: 2
+  shape_ncc_floor: 0.93
+  shape_ncc_full: 0.99
+  residual_ncc_floor: 0.55
+  residual_ncc_full: 0.85
+  background_ncc_floor: 0.3
+  background_ncc_full: 0.75
+  illumination_delta_max: 12
+  distribution_z_min: 2.5
+  min_score_report: 0.35
+  high_score: 0.7
+seam:
+  min_contrast: 12
+  min_run_fraction: 1.1
+  consistency: 0.85
+  max_width_px: 3
+local_consistency:
+  z_threshold: 4.0
+  min_glyphs_per_line: 6
+  min_metrics_flagged: 2
+text_geometry:
+  baseline_z: 4.0
+  height_z: 4.0
+  pitch_z: 4.5
+  min_glyphs_per_line: 6
+fusion:
+  weights:
+    barcode_mismatch: 0.9
+    glyph_copy_move: 0.75
+    seam_artifact: 0.55
+    rule_violation: 0.45
+    local_inconsistency: 0.35
+    geometry_anomaly: 0.3
+    ela: 0.25
+    noise: 0.2
+    jpeg_ghost: 0.3
+    metadata: 0.2
+  weak_cap: 0.45
+  weak_types:
+  - ela
+  - noise
+  - jpeg_ghost
+  - metadata
+  - geometry_anomaly
+  - local_inconsistency
+  medium_probability: 0.4
+  high_probability: 0.7

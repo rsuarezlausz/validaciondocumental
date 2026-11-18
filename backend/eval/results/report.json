@@ -1,0 +1,69 @@
+{
+  "n_per_class": 12,
+  "mean_seconds_per_document": 13.79,
+  "signals": {
+    "glyph_copy_move": {
+      "auc": 0.875,
+      "best_threshold": 0.371,
+      "recall": 0.833,
+      "false_positive_rate": 0.0,
+      "precision": 1.0
+    },
+    "seam_artifact": {
+      "auc": 1.0,
+      "best_threshold": 0.0,
+      "recall": 1.0,
+      "false_positive_rate": 0.0,
+      "precision": 1.0
+    },
+    "local_inconsistency": {
+      "auc": 0.5,
+      "best_threshold": 0.5,
+      "recall": 0.0,
+      "false_positive_rate": 0.0,
+      "precision": 0.0
+    },
+    "geometry_anomaly": {
+      "auc": 0.5,
+      "best_threshold": 0.5,
+      "recall": 0.0,
+      "false_positive_rate": 0.0,
+      "precision": 0.0
+    },
+    "ela": {
+      "auc": 0.531,
+      "best_threshold": 0.013,
+      "recall": 0.958,
+      "false_positive_rate": 0.833,
+      "precision": 0.697
+    },
+    "noise": {
+      "auc": 0.514,
+      "best_threshold": 0.702,
+      "recall": 1.0,
+      "false_positive_rate": 0.917,
+      "precision": 0.686
+    },
+    "jpeg_ghost": {
+      "auc": 0.5,
+      "best_threshold": 0.5,
+      "recall": 0.0,
+      "false_positive_rate": 0.0,
+      "precision": 0.0
+    },
+    "fused": {
+      "auc": 0.924,
+      "best_threshold": 0.438,
+      "recall": 0.875,
+      "false_positive_rate": 0.0,
+      "precision": 1.0
+    }
+  },
+  "false_positives_by_region": {
+    "photo": "n/a (sint\u00e9tico)",
+    "hologram": "n/a (sint\u00e9tico)",
+    "guilloche": "n/a (sint\u00e9tico)",
+    "text_field": 1
+  },
+  "note": "Datos sint\u00e9ticos: recalibrar con documentos reales del equipo."
+}

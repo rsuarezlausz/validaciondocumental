@@ -1,0 +1,15 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+pydantic>=2.6
+numpy>=1.26
+opencv-python-headless>=4.9
+Pillow>=10.2
+PyMuPDF>=1.24
+pytesseract>=0.3.10
+pypdf>=4.0
+# Opcional (OCR alternativo): paddleocr, paddlepaddle
+pytest>=8.0
+httpx>=0.27
+zxing-cpp>=2.2   # PDF417 (validacion cruzada con el texto)
+pyyaml>=6.0     # umbrales, plantilla y reglas en YAML

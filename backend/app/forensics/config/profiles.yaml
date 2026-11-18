@@ -1,0 +1,11 @@
+# Perfiles de documento. Las reglas y plantillas específicas de un documento SOLO se aplican si el OCR lo identifica
+# (palabras clave); en cualquier otro caso se usa el perfil "generic" (sin plantilla, sin reglas de vigencia).
+# SUPUESTO: las palabras clave y la vigencia de cada perfil deben verificarse con la fuente oficial.
+profiles:
+  ar_dni:
+    keywords: ["REPUBLICA ARGENTINA", "MERCOSUR", "REGISTRO NACIONAL DE LAS PERSONAS"]
+    uses_template: true          # zonas excluidas y OCR por campo de template_dni.yaml
+    check_validity: true         # regla de vigencia de rules.yaml (15 años para mayores de 16: por verificar)
+generic:
+  uses_template: false
+  check_validity: false          # una vigencia sin fuente verificada para ese documento NO se evalúa
